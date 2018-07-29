@@ -4,19 +4,15 @@ import com.github.barteks2x.b173gen.Generator;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.logging.Level;
 import org.bukkit.scheduler.BukkitRunnable;
 
 class FindRegionFilesTask extends BukkitRunnable {
-    private final Generator plugin;
     private final File worldFolder;
     private final Collection<RegionInfo> regionFiles;
     private final TaskStatus status;
 
     FindRegionFilesTask(Generator plugin, File worldFolder, Collection<RegionInfo> regionFiles, TaskStatus status) {
-        this.plugin = plugin;
         this.worldFolder = worldFolder;
         this.regionFiles = regionFiles;
         this.status = status;

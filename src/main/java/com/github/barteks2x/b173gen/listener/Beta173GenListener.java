@@ -12,6 +12,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.TreeType;
 import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,7 +23,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.server.ServerCommandEvent;
 import org.bukkit.event.world.StructureGrowEvent;
 import org.bukkit.event.world.WorldInitEvent;
-import org.bukkit.material.MaterialData;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +31,6 @@ import java.util.Random;
 public class Beta173GenListener implements Listener {
 
     private final Generator plugin;
-    private final Random r = new Random();
 
     public Beta173GenListener(Generator plugin) {
         this.plugin = plugin;
@@ -77,7 +76,7 @@ public class Beta173GenListener implements Listener {
         if(event == null || event.getItem() == null) {
             return;
         }
-        if(event.getItem().getType() == Material.EYE_OF_ENDER) {
+        if(event.getItem().getType() == Material.ENDER_EYE) {
             Player player = event.getPlayer();
             World world = player.getLocation().getWorld();
             WorldConfig cfg;
@@ -153,6 +152,14 @@ public class Beta173GenListener implements Listener {
             }
             return world.getBlockAt(x, y, z).getType();
         }
+        @Override public Block getBlockAt(int x, int y, int z) {
+            BlockPos pos = new BlockPos(x, y, z);
+            BlockState state = newStates.get(pos);
+            if(state != null) {
+                return state.getBlock();
+            }
+            return world.getBlockAt(x, y, z);
+        }
 
         @Override public void setType(int x, int y, int z, Material material) {
             BlockState state = world.getBlockAt(x, y, z).getState();
@@ -180,14 +187,7 @@ public class Beta173GenListener implements Listener {
             }
             return world.getBlockAt(x, y, z).getState();
         }
-
-        @Override public void setType(int x, int y, int z, Material type, MaterialData data) {
-            BlockState state = world.getBlockAt(x, y, z).getState();
-            state.setType(type);
-            state.setData(data);
-            newStates.put(new BlockPos(x, y, z), state);
-        }
-
+        
         @Override public int getHighestBlockYAt(int x, int z) {
             throw new UnsupportedOperationException("Not implemented");
         }

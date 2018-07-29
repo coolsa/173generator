@@ -6,7 +6,6 @@ import com.github.barteks2x.b173gen.config.WorldConfig;
 import com.github.barteks2x.b173gen.generator.ChunkProviderGenerate;
 import com.github.barteks2x.b173gen.listener.Beta173GenListener;
 import com.github.barteks2x.b173gen.metrics.Metrics;
-import com.github.barteks2x.b173gen.oldgen.MinecraftMethods;
 import com.github.barteks2x.b173gen.oldgen.WorldChunkManagerOld;
 import com.github.barteks2x.b173gen.regenbiomes.BiomeRegen;
 import org.bukkit.World;
@@ -37,7 +36,7 @@ public class Generator extends JavaPlugin {
 	public void onLoad() {
 		this.log = this.getLogger();
 		VersionChecker.checkServerVersion(this);
-		MinecraftMethods.init();
+		//MinecraftMethods.init();
 	}
 
 	@Override

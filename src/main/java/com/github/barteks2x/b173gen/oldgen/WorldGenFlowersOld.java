@@ -21,7 +21,9 @@ public class WorldGenFlowersOld implements WorldGenerator173 {
             int k1 = k + random.nextInt(8) - random.nextInt(8);
 
             if(world.isEmpty(i1, j1, k1)
-                    && MinecraftMethods.Block_canPlace(block, world, i1, j1, k1)) {
+                    && (world.getType(i1, j1-1, k1) == Material.DIRT 
+                    || world.getType(i1, j1-1, k1) == Material.GRASS_BLOCK)
+                    || world.getType(i1, j1-1, k1) == Material.FARMLAND) {
                 world.setType(i1, j1, k1, this.block);
             }
         }

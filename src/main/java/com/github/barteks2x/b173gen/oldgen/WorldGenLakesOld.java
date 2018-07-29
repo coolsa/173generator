@@ -64,8 +64,8 @@ public class WorldGenLakesOld implements WorldGenerator173 {
                     }
                     Material block = world.getType(blockX + localX, blockY + localY, blockZ + localZ);
                     //if above liquid surface and is liquid
-                    if(localY >= 4 && (block == Material.WATER || block == Material.STATIONARY_WATER ||
-                            block == Material.LAVA || block == Material.STATIONARY_LAVA)) {
+                    if(localY >= 4 && (block == Material.WATER || block == Material.WATER ||
+                            block == Material.LAVA || block == Material.LAVA)) {
                         return false;
                     }
 
@@ -99,7 +99,7 @@ public class WorldGenLakesOld implements WorldGenerator173 {
             }
         }
 
-        if(this.liquidBlock == Material.LAVA || this.liquidBlock == Material.STATIONARY_LAVA) {
+        if(this.liquidBlock == Material.LAVA || this.liquidBlock == Material.LAVA) {
             for(int i1 = 0; i1 < 16; ++i1) {
                 for(int i2 = 0; i2 < 16; ++i2) {
                     for(int j2 = 0; j2 < 8; ++j2) {

@@ -18,18 +18,23 @@ public class WorldGenReedOld implements WorldGenerator173 {
             int k1 = k + random.nextInt(4) - random.nextInt(4);
 
             if(world.isEmpty(i1, j, k1)
-                    && MinecraftMethods.Block_canPlace(Material.SUGAR_CANE_BLOCK, world, i, j, k)) {
+                    && canPlace(world, i, j, k)) {
                 int l1 = 2 + random.nextInt(random.nextInt(3) + 1);
 
                 for(int i2 = 0; i2 < l1; ++i2) {
-                    if(MinecraftMethods.Block_canPlace(Material.SUGAR_CANE_BLOCK, world, i1, j1 + i2, k1)) {
-                        world.setType(i1, j1 + i2, k1, Material.SUGAR_CANE_BLOCK);
+                    if(canPlace(world, i1, j1 + i2, k1)) {
+                        world.setType(i1, j1 + i2, k1, Material.SUGAR_CANE);
                     }
                 }
             }
         }
 
         return true;
+    }
+    private boolean canPlace(ISimpleWorld w, int x, int y, int z) {
+    	return ((w.getType(x, y-1, z)==Material.DIRT || w.getType(x, y-1, z)== Material.GRASS || w.getType(x, y-1, z)== Material.SAND)
+    			&&
+    			 (w.getBlockAt(x, y-1, z-1).isLiquid() || w.getBlockAt(x, y-1, z+1).isLiquid() || w.getBlockAt(x-1, y-1, z).isLiquid() || w.getBlockAt(x+1, y-1, z).isLiquid()));
     }
 
     public void scale(double d0, double d1, double d2) {

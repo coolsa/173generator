@@ -9,42 +9,19 @@
         <!--Special git describe version allows for empty prefix & suffix-->
         <gitdescribe-prefix></gitdescribe-prefix>
         <gitdescribe-suffix></gitdescribe-suffix>
-        <protocolLibVersion>4.3.0</protocolLibVersion>
+        <protocolLibVersion>4.4.0-20180724.210940-30</protocolLibVersion>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.12.2-R0.1-SNAPSHOT</version>
+            <version>1.13-R0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>craftbukkit</artifactId>
-            <version>1.12.2-R0.1-SNAPSHOT</version>
+            <version>1.13-R0.1-SNAPSHOT</version>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.comphenix.protocol</groupId>
-            <artifactId>ProtocolLib</artifactId>
-            <version>${protocolLibVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.flowpowered</groupId>
-            <artifactId>flow-nbt</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.10</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.9.5</version>
-            <scope>test</scope>
         </dependency>
 
     </dependencies>
@@ -82,6 +59,7 @@
                 <configuration>
                     <target>1.6</target>
                     <defaultMethods>true</defaultMethods>
+                    <skipTests>true</skipTests>
                 </configuration>
             </plugin>
             <!--git-describe plugin-->

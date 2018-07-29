@@ -3,7 +3,6 @@ package com.github.barteks2x.b173gen.generator.populator;
 import com.github.barteks2x.b173gen.ISimpleWorld;
 import com.github.barteks2x.b173gen.generator.IPopulator;
 import com.github.barteks2x.b173gen.generator.PopulatorState;
-import com.github.barteks2x.b173gen.oldgen.MinecraftMethods;
 import org.bukkit.Material;
 
 import java.util.Random;
@@ -33,8 +32,7 @@ public class SnowPopulator implements IPopulator {
 
     public static int getHighestSolidOrLiquidBlock(ISimpleWorld world, int i, int j) {
         for (int k = 127; k > 0; --k) {
-            Material material = world.getType(i, k, j);
-            if (material != Material.AIR || MinecraftMethods.isLiquid(material)) {
+            if (world.getType(i, k, j) != Material.AIR || world.getBlockAt(i, k, j).isLiquid()) {
                 return k + 1;
             }
         }

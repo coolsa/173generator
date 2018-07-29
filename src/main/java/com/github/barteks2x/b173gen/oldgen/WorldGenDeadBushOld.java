@@ -3,6 +3,7 @@ package com.github.barteks2x.b173gen.oldgen;
 import com.github.barteks2x.b173gen.ISimpleWorld;
 import com.github.barteks2x.b173gen.generator.WorldGenerator173;
 import org.bukkit.Material;
+import org.bukkit.Tag;
 
 import java.util.Random;
 
@@ -18,7 +19,7 @@ public class WorldGenDeadBushOld implements WorldGenerator173 {
 
         for(Material l;
                 ((l = world.getType(i, j, k)) == Material.AIR
-                || l == Material.LEAVES) && j > 0; --j) {
+                || Tag.LEAVES.isTagged(l)) && j > 0; --j) {
         }
 
         for(int i1 = 0; i1 < 4; ++i1) {
@@ -26,7 +27,7 @@ public class WorldGenDeadBushOld implements WorldGenerator173 {
             int k1 = j + random.nextInt(4) - random.nextInt(4);
             int l1 = k + random.nextInt(8) - random.nextInt(8);
 
-            if(world.isEmpty(j1, k1, l1) && MinecraftMethods.Block_canPlace(this.block, world, i1, k1, l1)) {
+            if(world.isEmpty(j1, k1, l1) && world.getType(i1, k1, l1) == Material.SAND) {
                 world.setType(j1, k1, l1, this.block);
             }
         }

@@ -1,3 +1,4 @@
+api-version: 1.13
 name: ${name}
 version: ${describe}
 description: ${description}
@@ -11,5 +12,5 @@ commands:
         usage: |
             /173generator regenbiomes [world=worldname] [maxTickMillis=number] - regenerate biomes in world [worldname] with [number] of milliseconds per tick for regenerating biomes. If using from console world must be specified. Default maxTickMillis is 10.
 permissions:
-    b173gen.regenbiomes: 
+    b173gen.regenbiomes:
         description: /173generator regenbiomes command

@@ -56,11 +56,11 @@ public class ChunkProviderGenerate extends ChunkGenerator {
         this.config = config;
     }
 
-    @Override
-    public List<org.bukkit.generator.BlockPopulator> getDefaultPopulators(org.bukkit.World w) {
-        plugin.initWorld(w);
-        return Collections.unmodifiableList(populatorList);
-    }
+//    @Override
+//    public List<org.bukkit.generator.BlockPopulator> getDefaultPopulators(org.bukkit.World w) {
+//        plugin.initWorld(w);
+//        return Collections.unmodifiableList(populatorList);
+//    }
 
     @SuppressWarnings("unchecked")
     public void init(World world, WorldChunkManagerOld wcm) {
@@ -77,12 +77,12 @@ public class ChunkProviderGenerate extends ChunkGenerator {
         noiseGen7 = new NoiseGeneratorOctaves3D(rand, 16, this.config.nofarlands);
         treeNoise = new NoiseGeneratorOctaves3D(rand, 8, this.config.nofarlands);
 
-        caves = new WorldGenCavesOld();
+//        caves = new WorldGenCavesOld();
 
-        this.populatorManager = new PopulatorManager(world, wcm, config);
-        this.populatorList = populatorManager.getPopulators();
-
-        populatorManager.setTreeNoise(treeNoise);
+//        this.populatorManager = new PopulatorManager(world, wcm, config);
+//        this.populatorList = populatorManager.getPopulators();
+//
+//        populatorManager.setTreeNoise(treeNoise);
     }
 
     @Override
@@ -151,7 +151,7 @@ public class ChunkProviderGenerate extends ChunkGenerator {
                                     if(d17 < 0.5D && yPiece * 8 + l1 >= oceanHeight - 1) {
                                         block = ICE;
                                     } else {
-                                        block = STATIONARY_WATER;
+                                        block = WATER;
                                     }
                                 }
                                 if(d15 > 0.0D) {
@@ -225,7 +225,7 @@ public class ChunkProviderGenerate extends ChunkGenerator {
                             }
                         }
                         if(y < oceanHeight && topBlock == AIR) {
-                            topBlock = STATIONARY_WATER;
+                            topBlock = WATER;
                         }
                         prevDepth = depth;
                         if(y >= oceanHeight - 1) {
@@ -257,13 +257,13 @@ public class ChunkProviderGenerate extends ChunkGenerator {
     @Override
     public boolean canSpawn(World w, int x, int z) {
         this.plugin.initWorld(w);
-        int y;
-
-        for(y = 63; !w.getBlockAt(x, y + 1, z).isEmpty(); ++y) {
-        }
-
-        return w.getBlockAt(x, y, z).getType() == Material.SAND;
-
+//        int y;
+//
+//        for(y = 63; !w.getBlockAt(x, y + 1, z).isEmpty(); ++y) {
+//        }
+//
+//        return w.getBlockAt(x, y, z).getType() == Material.SAND;
+        return true;
     }
 
     @Override
